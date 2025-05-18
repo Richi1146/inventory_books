@@ -1,39 +1,3 @@
-def search_books():
-    term = input("Search by title, author, or category: ").strip().lower()
-
-    # Validation: input should not be empty
-    if not term:
-        print("❌ Please enter a search term.")
-        return
-
-    # Validation: input should not contain only spaces or symbols
-    if term.replace(" ", "").isnumeric() or not any(c.isalpha() for c in term):
-        print("❌ Please enter a valid search term containing letters.")
-        return
-
-    # Optional validation: at least 2 useful characters
-    if len(term.replace(" ", "")) < 2:
-        print("❌ Please enter at least two letters to search.")
-        return
-
-    # Search
-    results = [
-        b for b in book
-        if term in b["title"].lower()
-        or term in b["author"].lower()
-        or term in b["category"].lower()
-    ]
-
-    # Results
-    if not results:
-        print("🔎 No matches found.")
-        return
-
-    print("\n📚 Search results:")
-    for book in results:
-        print(f'{book["id"]} | {book["title"]} | {book["author"]} | {book["year"]} | {book["category"]} | {book["status"]}')
-
-
 def show_menu():
     flag = True
     while flag:
